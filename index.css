@@ -1,0 +1,595 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 16px;
+}
+
+body{
+    padding: 0;
+    margin: 0 auto;
+    max-width: 69rem;
+    color: rgb(95, 108, 114);
+}
+
+.FlexContainer{
+    background-color: rgb(253, 252, 249);
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 800px){
+    .FlexContainer{
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 2000px){
+    html{
+        font-size: 28px;
+    }
+    body{
+        min-width: 69rem;
+        max-width: 70%;
+    }
+    .c1 .TopRow input{
+        font-size: 1rem;
+    }
+    .c4 button, .c4 select, .c4 input{
+        font-size: 1rem;
+    }
+}
+
+a:link{
+    color: rgb(95, 108, 114);
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------
+   [Container 1 - Top of the page]
+   ------------------------------------------------------------------------------------------------------------------------------------------------------ */  
+
+.c1, .TopRow, .BotRow{
+    width: 100%;
+    display: flex;
+}
+
+.c1{
+    flex-wrap: wrap;
+    border-left: 5px solid rgb(134, 162, 169);
+    border-bottom: 5px solid rgb(134, 162, 169);
+}
+
+.c1 .TopRow {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.c1 .TopRow input{
+    border: 0;
+    border-radius: 10px;
+    width: 20%;
+    padding-left: 1.8rem; 
+    margin-left: 6px;
+    background: transparent url("search.svg") no-repeat 5px center;
+}
+
+.c1 .TopRow input:focus{
+    background-color: rgb(230, 222, 205);
+}
+
+.c1 .TopRow a{
+    text-decoration: none;
+}
+
+.c1 .TopRow input + a{
+    margin-left: auto;
+    padding-right: 0.5rem;
+}
+
+.c1 .TopRow a + a{
+    border-left: 2px solid black;
+    padding: 0 0.5rem;
+}
+
+.c1 .ImageContainer{
+    width: 100%;
+    display: flex;
+}
+
+.c1 .Burger, .c1 .Burger input{
+    display: none;
+}
+
+.c1 .Logo{
+    width: 50%;
+    height: 2rem;
+    margin: 2rem auto;
+}
+
+.c1 .BasketImg{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.c1 .BotRow{
+    font-weight: bold;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.c1 .BotRow a{
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+}
+
+.c1 .BotRow > a:first-child{
+    margin-left: 0.5rem;
+}
+
+.c1 .BotRow .GiftBasket{
+    margin-right: 0.5rem;
+}
+
+.c1 a:visited{
+    color: rgb(95, 108, 114);
+}
+
+@media (max-width: 800px){
+    .c1{
+        font-size: 1.2rem;
+        border-left: 0; border-bottom-width: 3px;
+    }
+    .c1 .TopRow{ 
+        background-color: rgb(232, 239, 242);
+        order: 2;   
+        margin: 0;
+        padding: 0.5rem; 
+        align-items: center;
+    }
+    .c1 .TopRow a{
+        display: none;
+    }
+    .c1 .TopRow input{
+        width: 100%;
+        height: 2rem;
+        background: transparent url("search.svg") no-repeat 5px center;
+        background-size: 1.2rem;
+    }
+    .c1 .TopRow input:focus{
+        background-color: rgb(210, 220, 224);
+        outline: none;
+    }
+    .c1 .ImageContainer{
+        height: 5rem;
+        padding: 0 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .c1 .Logo{
+        min-height: 2.5rem !important;
+        min-width: 150px;
+        margin: 0;
+    }
+    .c1 .Burger{
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: inherit;
+        position: relative;
+    }
+    .c1 .Burger label{
+        width: 1.5rem;
+        height: 1.5rem;
+        padding-top: 8px;
+        position: absolute;
+        z-index: 2;
+    }
+    /* .c1 .Burger label span, span::before --> span::before is selected without the .c1 .Burger label constraint*/
+    .c1 .Burger label span,
+    .c1 .Burger label span::before,
+    .c1 .Burger label span::after{
+        width: 100%;
+        height: 3px;
+        background-color: gray;
+        position: absolute;
+        transition: transform .3s, top .3s;
+    }
+    .c1 .Burger label span::before{
+        content: '';
+        top: 8px;
+    }
+    .c1 .Burger label span::after{
+        content: '';
+        top: -8px;
+    }
+    .c1 .Burger input:checked + label span{
+        transform: rotate(45deg);
+    }
+    /* .c1 .Burger inpute:checkd label span::before --> doesn't work bcs input is an empty element and doesn't have anything inside it
+       .c1 .Burger input:checked + label span::before --> this will select the first label tag after the input */
+    .c1 .Burger input:checked + label span::before{
+        top: 0;
+        transform: rotate(0deg);
+    }
+    .c1 .Burger input:checked + label span::after{
+        top: 0;
+        transform: rotate(90deg);
+    }
+    .c1 .Burger .BurgerMenu{
+        position: fixed;
+        height: 100%;
+        width: 80%;
+        top: 0;
+        left: -80%;
+        background-color: rgb(253, 252, 249);
+        transition: .3s;
+    }
+    .c1 .Burger input:checked ~ .BurgerMenu{
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+        left: 0;
+    }
+    .c1 .BasketImg{
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .c1 .BotRow{
+        display: none;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------
+   [Container 1 - DROPDOWN MENU] Can't set width to 100% because the dropdown div isn't a child of an element with a width of 100%
+        In this case a set width is given to the menu --> unresponsive 
+   ------------------------------------------------------------------------------------------------------------------------------------------------------ */ 
+/*      For this solution to work, the container for all those links must have position: relative, this way using position:absolute 
+   on the .DropMenu --> it will be placed on the top left corner of it's containter (.BotRow) and make it visually appear above all other elements 
+   - This way since .BotRow has a width: 100% (The width of the page), the .DropMenu can be set to have a width: 100% --> it's a bit responsive
+        (If a fixed width would've been used, the .DropMenu would get cropped whenever the viewport has smaller width that the page. )
+   - The element is hidden by making it have a height: 0 and overflow hidden when not interacted 
+   - When the links are interacted with, the .DropMenu gets a height:auto and overflow:visible
+   - For it to appear bellow the link it must be placed with top:, left: CSS properties 
+   - The .DropMenu is selected with the (~) selector --> selects the elements "bellow" it
+   - Since .DropMenu isn't a child of .Occasions, when selecting it with .Occasions:hover the :hover property isn't inherited to .DropMenu --> 
+          --> the menu dissapears when the cursor leave the .Occasions element  
+   - A simple solution is to define the same :hover for the .DropMenu as well. */
+
+/* Animating the height works only when a fixed value is given, doesn't work with height:auto or min-height: 376px;*/
+.c1 .Occasions:hover ~ .DropMenu.Ocassions,
+.c1 .DropMenu.Ocassions:hover{
+    height: 376px;
+    /* height: auto */
+    border: 5px solid rgb(134, 162, 169);
+    border-right: 0;
+    transition: height 0.3s;
+    overflow: clip;
+    /* overflow: visible */
+}
+
+.c1 .DropMenu{
+    position: absolute;
+    top: 26px;
+    left: -5px;
+    overflow: hidden;
+    width: calc(100% + 5px); /* Lengthen it a bit bcs it was moved -5px to the left */
+    height: 0;
+    border: 0;
+    background-color: rgb(253, 252, 249);
+    display: flex;
+}
+
+.c1 .DropMenu.Ocassions p{
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.c1 .DropMenu.Ocassions a:hover{
+    color: red;
+    text-decoration: underline;
+}
+
+.c1 .DropMenu.Ocassions .DropMenu-left, .DropMenu-right, .DropMenu-middle{
+    width: auto;
+    display: flex;
+    flex-flow: column;
+    padding-top: 1rem;
+}
+
+.c1 .DropMenu.Ocassions .DropMenu-left, .DropMenu-middle{
+    width: 20%;
+}
+
+.c1 .DropMenu.Ocassions .DropMenu-left, .DropMenu-right{
+    padding-left: 1rem;
+}
+
+.c1 .DropMenu.Ocassions .DropMenu-right{
+    width: 60%;
+    padding-right: 1rem;
+}
+
+.c1 .DropMenu.Ocassions .DropMenu-right img{
+    width: 100%;
+    max-width: 100%;
+}
+
+.c1 .DropMenu.Ocassions .DropMenu-right p{
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------
+   [Container 1 - DROPDOWN MENUS] 
+   ------------------------------------------------------------------------------------------------------------------------------------------------------ */ 
+.c1 .BotRow a:hover{
+    text-decoration: underline;
+}
+
+.c1 .Holidays:hover ~ .DropMenu.Holidays, .c1 .Themes:hover ~ .DropMenu.Themes, .c1 .GiftShop:hover ~ .DropMenu.GiftShop,
+    .c1 .About:hover ~ .DropMenu.About, .c1 .Behind:hover ~ .DropMenu.Behind, .c1 .GiftBasket:hover ~ .DropMenu.GiftBasket{
+    height: 376px;
+    /* height: auto */
+    border: 5px solid rgb(134, 162, 169);
+    border-right: 0;
+    transition: height 0.3s;
+    overflow: clip;
+    /* overflow: visible */
+}
+
+.c1 .DropMenu.Holidays:hover, .c1 .DropMenu.Themes:hover, .c1 .DropMenu.GiftShop:hover, .c1 .DropMenu.About:hover,
+    .DropMenu.Behind:hover, .c1 .DropMenu.GiftBasket:hover{
+    height: 376px;
+    /* height: auto */
+    border: 5px solid rgb(134, 162, 169);
+    border-right: 0;
+    transition: height 0.3s;
+    overflow: clip;
+    /* overflow: visible */
+}
+
+.c1 .DropMenu.Holidays, .c1 .DropMenu.Themes, .c1 .DropMenu.GiftShop, .c1 .DropMenu.About, .c1 .DropMenu.Behind, .c1 .DropMenu.GiftBasket{
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------
+   [Container 2 - Top of the page] + [Nav bar]
+   ------------------------------------------------------------------------------------------------------------------------------------------------------ */ 
+
+.c2{
+    background-color: rgb(232, 239, 242);
+    border-left: 2px solid rgb(134, 162, 169);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.c2 p{
+    width: 100%;
+    padding: 0 5rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+
+nav{
+    color: rgb(88, 116, 122);
+    border: 5px solid rgb(75, 119, 137);
+    width: 100%;
+    display: flex;
+}
+
+
+nav a{
+    width: 33.33333333333%;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.5rem 0.1rem;
+}
+
+nav a:visited{
+    color: inherit;
+}
+
+nav a .Redeem:after{
+    content: "REDEEM";
+}
+
+nav a .Register:after{
+    content: "REGISTER";
+}
+
+nav a .Confirmation:after{
+    content: "CONFIRMATION";
+}
+
+nav a+a{
+    border-left: 5px solid rgb(75, 119, 137);
+}
+
+nav a:hover{
+    background-color: rgb(75, 119, 137);
+    color: white;
+}
+
+@media (max-width: 800px){
+    .c2{
+        border-left: 0;
+    }
+    .c2 h1{
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    .c2 p{
+        padding: 0 1.5rem;
+        margin-bottom: 2rem;
+    }
+    nav{
+        border-left: 0; border-right: 0;
+        border-width: 3px;
+    }
+    nav a span{
+        font-weight: bold;
+    }
+    nav a .Redeem:after{
+        content: "STEP 1";
+    }
+    
+    nav a .Register:after{
+        content: "STEP 2";
+    }
+    
+    nav a .Confirmation:after{
+        content: "STEP 3";
+    }
+    nav a+a{
+        border-width: 3px;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------
+   [FlexContainer2 + Container 3]
+   ------------------------------------------------------------------------------------------------------------------------------------------------------ */ 
+
+.FlexContainer2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 5px solid rgb(134, 162, 169);
+    padding: 1rem 0;
+}
+
+.c3{
+    width: 50%;
+    padding: 0 1rem;
+}
+
+.c3 img{
+    width: 100%;
+    max-width: 100%;
+    height: 70%;
+    max-height: 70%;
+}
+
+@media (max-width: 800px){
+    .FlexContainer2{
+        border-width: 0;
+        display: block;
+    }
+    .c3{
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------
+   [Container 4 - Form] 
+   ------------------------------------------------------------------------------------------------------------------------------------------------------ */ 
+
+.c4{
+    border-left: 3px solid rgb(134, 162, 169);
+    width: 50%;
+    padding-left: 1rem;
+}
+
+.c4 h1{
+    margin-top: 0rem;
+}
+
+.c4 label{
+    color:rgb(18, 99, 146);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-top: 2.5rem;
+}
+
+.c4 input, select, button{
+    border: 2px solid rgb(134, 162, 169);
+    width: calc(100% - 1rem);
+    height: 2rem;
+}
+
+.c4 select{
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.c4 button{
+    background-color:rgb(75, 119, 137);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.c4 button:hover{
+    background-color: rgb(77, 105, 196);
+}
+
+@media (max-width: 800px){
+    .c4{
+        width: 100%;
+        border-width: 0;
+    }
+    .c4 h1{
+        text-align: center;
+        margin: 0 auto;
+        font-size: 1.5rem;
+    }
+    .c4 label{
+        margin-top: 1.5rem;
+    }
+    .c4 select{
+        margin-bottom: 2rem;
+    }
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------
+   [Container 5]
+   ------------------------------------------------------------------------------------------------------------------------------------------------------ */
+
+.c5{
+    border-left: 2px solid rgb(134, 162, 169);
+    border-bottom: 5px solid rgb(134, 162, 169);
+    background-color: rgb(232, 239, 242);
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c5 section{
+    width: 50%;
+    max-width: 50%;
+}
+
+.c5 img{
+    width: 48%;
+    max-width: 48%;
+    height: 90%;
+    max-height: 90%;
+}
+
+@media (max-width: 800px){
+    .c5{
+        flex-flow: column;
+        border: 0;
+    }
+    .c5 section{
+        width: 100%;
+        max-width: 100%;
+    }
+    .c5 img{
+        width: 100%;
+        max-width: 100%;
+    }
+}
